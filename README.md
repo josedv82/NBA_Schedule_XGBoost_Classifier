@@ -7,6 +7,15 @@ A colab notebook showcasing a model to predict NBA game outcomes based on schedu
 * To train the model I used 20 seasons of NBA data (2000-19).
 * I also ran the model on 2021 season data to check its performance given some of the differences in schedule related to COVID.
 
+#### Metrics:
+* Game Outcome (model target)
+* Distance Travelled. Distance travelled over "X" time windows for both teams in a game.
+* Time Zone Shifts. Number of time zone shifs over "X" time windows for both teams in a game.
+* Games Played. Games played over "X" time windows for both teams.
+* Rest Days. Number of rest days prior to a game for both teams.
+* Location. Home or Away.
+* Win %. Winning % for each team.
+
 #### The model:
 * This notebook implements an [XGBoost](https://xgboost.readthedocs.io/en/latest/) model. I used the [{h2o}](https://www.h2o.ai/products/h2o/) package in R to build, train and evaluate the model. 
 
