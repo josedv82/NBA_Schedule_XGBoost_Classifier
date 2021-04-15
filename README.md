@@ -3,7 +3,7 @@
 A colab notebook showcasing a model to predict NBA game outcomes based on schedule related data. 
 
 #### Data Source:
-* I used an R package I built called [{airball}](https://github.com/josedv82/airball) to download the data. {airball} comes with various functions to extract schedule related metrics from public box score information.
+* I used an R package I built called [{airball}](https://github.com/josedv82/airball) to download the data. {airball} provides various functions to extract schedule related metrics from public box score information.
 * To train the model I used 20 seasons of NBA data (2000-19).
 * I also ran the model on 2021 season data to check its performance given some of the differences in schedule related to COVID.
 
