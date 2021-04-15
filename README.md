@@ -23,6 +23,8 @@ A colab notebook showcasing a model to predict NBA game outcomes based on schedu
 * I used [SHAP](https://www.kaggle.com/dansbecker/shap-values) values to identify feature importance, as well as to explain how different features contribute to model predictions and outcome probabilities for each observation.
 
 #### Access
+The notebook has comments with more explanations about each part of the process. For access:
+
 * A static copy of the notebook is available [here](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
 * For access to the interactive colab notebook visit [this link](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
 
