@@ -1,6 +1,6 @@
 # Predicting NBA game outcomes using schedule data
 
-A google colab notebook showcasing a model to predict NBA game outcomes based on schedule related data. 
+A google colab notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
 
 #### Data Source:
 * I used an R package I built called [{airball}](https://github.com/josedv82/airball) to download the data. {airball} provides various functions to extract schedule related metrics from public box score information.
