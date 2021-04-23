@@ -1,18 +1,17 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "Airball NBA Download"
+author: Jose Fernandez
+2018
 ---
 
 
 ```{r}
-library(xgboost)
-library(caTools)
-library(dplyr)
-library(caret)
 library(tidyverse)
 
+#data pull
 data <- airball::nba_travel(start_season = 2020, end_season = 2021) %>% ungroup()
 
+#feature engineering
 dat <- data %>% 
   group_by(Season, Team) %>%
   complete(Date = seq.Date(min(Date), max(Date), by="day")) %>%
@@ -50,7 +49,7 @@ dat <- data %>%
   fill(win_pct)
  
 
-
+#opponent features
 dat1 <- dat %>%
   select(Season, Opponent = Team, Team = Opponent, Date, Opp_Distance = Distance, Opp_Rest = Rest, Opp_Zone = Zone, Opp_G3 = G3, Opp_G5 = G5, Opp_G7 = G7, Opp_G9 = G9, Opp_G11 = G11, Opp_G13 = G13, Opp_G15 = G15, Opp_G17 = G17, Opp_G19 = G19, Opp_G21 = G21, Opp_Shift3 = Shift3,  Opp_Shift5 = Shift5,  Opp_Shift7 = Shift7, Opp_Shift9 = Shift9, Opp_Distance3 = Distance3, Opp_Distance5 = Distance5, Opp_Distance7 = Distance7, Opp_Distance9 = Distance9, opp_win_pct = win_pct)
 
