@@ -18,7 +18,7 @@ A google colab notebook showcasing the workflow of a model to predict NBA game o
 * ```Win %``` Winning % for each team.
 
 #### The model:
-* This is an example of supervised learning where a [XGBoost](https://www.kaggle.com/prashant111/xgboost-k-fold-cv-feature-importance) model was implemented. I used the [{h2o}](https://www.h2o.ai/products/h2o/) package in R to build, train and evaluate the model. 
+* This is an example of supervised learning where a [XGBoost](https://www.kaggle.com/prashant111/xgboost-k-fold-cv-feature-importance) classifier was implemented. I used the [{h2o}](https://www.h2o.ai/products/h2o/) package in R to build, train and evaluate the model. 
 
 #### Model Explainability:
 * I used [SHAP](https://www.kaggle.com/dansbecker/shap-values) values to identify feature importance, as well as to explain how different features contribute to model predictions and outcome probabilities for each observation.
