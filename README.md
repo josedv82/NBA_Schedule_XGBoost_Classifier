@@ -1,4 +1,4 @@
-# Influence of schedule related metrics on games outcomes in the NBA. A predictive model approach.
+# Influence of schedule related metrics on game outcomes in the NBA. 
 
 A google colab notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
 
