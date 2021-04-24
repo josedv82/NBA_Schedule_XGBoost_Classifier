@@ -9,7 +9,7 @@ author: Jose Fernandez
 library(tidyverse)
 
 #data pull
-data <- airball::nba_travel(start_season = 2020, end_season = 2021) %>% ungroup()
+data <- airball::nba_travel(start_season = 2000, end_season = 2019) %>% ungroup() # adjust parameters based on interest
 
 #feature engineering
 dat <- data %>% 
@@ -39,23 +39,28 @@ dat <- data %>%
   filter(Phase != "-") %>%
   mutate(Games = row_number()) %>%
   mutate(W = zoo::rollapplyr(`W/L` == "W", 82, sum, partial = T)) %>%
-  mutate(win_pct = round((W/Games),2)) %>% ungroup() %>% 
-  select(Season, Team, Opponent, Date, Location, Distance, Distance3, Distance5, Distance7, Distance9, Rest, Zone = `Shift (hrs)`, Result = `W/L`, G3, G5, G7, G9, G11, G13, G15, G17, G19, G21, Shift3, Shift5, Shift7, Shift9, win_pct) %>% 
+  mutate(win_pct = round((W/Games),2)) %>% 
+  mutate(Streak2 = sequence(rle(`W/L`)$lengths)) %>% 
+  mutate(Streak2 = ifelse(`W/L` == "L", Streak2 * -1, Streak2)) %>%
+  mutate(Streak1 = lag(Streak2)) %>%
+  mutate(Streak = ifelse(is.na(Streak1), 0, Streak1)) %>%
+  select(-Streak2, -Streak1) %>%
+  ungroup() %>% 
+  select(Season, Team, Opponent, Date, Location, Distance, Distance3, Distance5, Distance7, Distance9, Rest, Zone = `Shift (hrs)`, Result = `W/L`, G3, G5, G7, G9, G11, G13, G15, G17, G19, G21, Shift3, Shift5, Shift7, Shift9, Streak, win_pct) %>% 
   mutate(Location = ifelse(Location == "Away", 1, 0)) %>% 
   mutate(Result = ifelse(Result == "W", 1, 0)) %>%
   mutate(Result = ifelse(Date >= Sys.Date(), NA, Result)) %>%
   mutate(win_pct = ifelse(Date >= Sys.Date(), NA, win_pct)) %>%
-  filter(Season == "2020-21") %>%
+  filter(Season == "2020-21") %>% #comment this for all data
   fill(win_pct)
- 
 
 #opponent features
 dat1 <- dat %>%
-  select(Season, Opponent = Team, Team = Opponent, Date, Opp_Distance = Distance, Opp_Rest = Rest, Opp_Zone = Zone, Opp_G3 = G3, Opp_G5 = G5, Opp_G7 = G7, Opp_G9 = G9, Opp_G11 = G11, Opp_G13 = G13, Opp_G15 = G15, Opp_G17 = G17, Opp_G19 = G19, Opp_G21 = G21, Opp_Shift3 = Shift3,  Opp_Shift5 = Shift5,  Opp_Shift7 = Shift7, Opp_Shift9 = Shift9, Opp_Distance3 = Distance3, Opp_Distance5 = Distance5, Opp_Distance7 = Distance7, Opp_Distance9 = Distance9, opp_win_pct = win_pct)
+  select(Season, Opponent = Team, Team = Opponent, Date, Opp_Distance = Distance, Opp_Rest = Rest, Opp_Zone = Zone, Opp_G3 = G3, Opp_G5 = G5, Opp_G7 = G7, Opp_G9 = G9, Opp_G11 = G11, Opp_G13 = G13, Opp_G15 = G15, Opp_G17 = G17, Opp_G19 = G19, Opp_G21 = G21, Opp_Shift3 = Shift3,  Opp_Shift5 = Shift5,  Opp_Shift7 = Shift7, Opp_Shift9 = Shift9, Opp_Distance3 = Distance3, Opp_Distance5 = Distance5, Opp_Distance7 = Distance7, Opp_Distance9 = Distance9, Opp_Streak = Streak, opp_win_pct = win_pct)
 
 dat_full <- full_join(dat, dat1) 
 
-write.csv(dat_full, "data2021.csv")
+#write.csv(dat_full, "data_NBA_sche.csv")
 
 ```
 
