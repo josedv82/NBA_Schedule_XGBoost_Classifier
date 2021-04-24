@@ -7,7 +7,7 @@ author: Jose Fernandez
 
 ```{r}
 library(tidyverse)
-library(airball)
+library(airball) #more info: https://github.com/josedv82/airball
 
 #data pull
 data <- nba_travel(start_season = 2000, end_season = 2019) %>% ungroup() # adjust parameters based on interest
