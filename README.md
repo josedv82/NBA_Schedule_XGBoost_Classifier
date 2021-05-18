@@ -30,7 +30,7 @@ To understand the impact of schedule related metrics on game performance. This i
 
 #### More details:
 * A static copy of the notebook is available [here](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
-* For access to the interactive colab notebook visit [this link](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
+* For access to the interactive notebook visit [this link](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) to open google colab.
 
 #### Future Work:
 * Continue improving model performance.
