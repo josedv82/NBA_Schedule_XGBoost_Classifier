@@ -22,6 +22,24 @@ To understand the impact of schedule related metrics on game performance. This i
 
 #### XGBoost model:
 * This is an example of supervised learning where a [XGBoost](https://www.kaggle.com/prashant111/xgboost-k-fold-cv-feature-importance) classifier was implemented. I used the [{h2o}](https://www.h2o.ai/products/h2o/) package in R to build, train and evaluate the model. 
+* Current model performance:  
+```
+MSE:  0.1803835
+RMSE:  0.4247158
+LogLoss:  0.5333432
+Mean Per-Class Error:  0.2758835
+AUC:  0.8041708
+AUCPR:  0.8072966
+Gini:  0.6083416
+R^2:  0.2784605
+
+Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
+          0    1    Error        Rate
+0      2495 1335 0.348564  =1335/3830
+1       774 3035 0.203203   =774/3809
+Totals 3269 4370 0.276083  =2109/7639
+
+```
 
 #### Model Explainability:
 * I used [SHAP](https://www.kaggle.com/dansbecker/shap-values) values to identify feature importance, as well as to explain how different features contribute to model predictions and outcome probabilities for each observation.
