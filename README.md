@@ -26,6 +26,8 @@ To understand the impact of schedule related metrics on game performance. This i
 #### Model Explainability:
 * I used [SHAP](https://www.kaggle.com/dansbecker/shap-values) values to identify feature importance, as well as to explain how different features contribute to model predictions and outcome probabilities for each observation.
 
+<img src="https://github.com/josedv82/NBA_Schedule_Classifier/blob/main/SHAP_Force_Plot.PNG" align="center" />
+
 #### More details:
 * A static copy of the notebook is available [here](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
 * For access to the interactive colab notebook visit [this link](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
