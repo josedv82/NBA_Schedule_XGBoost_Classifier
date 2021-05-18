@@ -6,7 +6,7 @@ A google colab notebook showcasing the workflow of a model to predict NBA game o
 To understand the impact of schedule related metrics on game performance. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators.
 
 #### Data Source:
-* I used an R package that I built called [{airball}](https://github.com/josedv82/airball) to [download the data](https://github.com/josedv82/NBA_Predictive_Model/blob/main/Airball_Download.Rmd). {airball} provides various functions to extract schedule related metrics from public box score information.
+* I built an R package ([{airball}](https://github.com/josedv82/airball)) to [scrape the data](https://github.com/josedv82/NBA_Predictive_Model/blob/main/Airball_Download.Rmd). {airball} provides various functions to extract schedule related metrics from public box score information.
 * To train the model I used 20 seasons of NBA data (2000-19).
 * I also ran the model on 2021 season data to check its performance given some of the differences in schedule related to COVID.
 
