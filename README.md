@@ -46,7 +46,7 @@ Totals 3269 4370 0.276083  =2109/7639
 
 <img src="https://github.com/josedv82/NBA_Schedule_Classifier/blob/main/SHAP_Force_Plot.PNG" align="center" />
 
-#### More details:
+#### Check Out the Code:
 * A static copy of the notebook is available [here](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) 
 * For access to the interactive notebook visit [this link](https://github.com/josedv82/NBA_Predictive_Model/blob/main/NBA_Schedule_xgboost.ipynb) to open google colab.
 
