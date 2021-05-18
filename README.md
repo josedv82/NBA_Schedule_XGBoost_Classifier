@@ -1,9 +1,9 @@
 # Influence of schedule related metrics on game outcomes in the NBA. 
 
-A google colab notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
+A notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
 
 #### Goal:
-To understand the impact of schedule related metrics on game performance. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators.
+More than prediction game outcomes, my goal was to understand the impact that different schedule related metrics may have on performance. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators during the season.
 
 #### Data Source:
 * I built an R package ([{airball}](https://github.com/josedv82/airball)) to [scrape the data](https://github.com/josedv82/NBA_Predictive_Model/blob/main/Airball_Download.Rmd). {airball} provides various functions to extract schedule related metrics from public box score information.
