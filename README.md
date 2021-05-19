@@ -1,4 +1,4 @@
-# Influence of schedule related metrics on game outcomes in the NBA. 
+# Influence of schedule & travel metrics on game outcomes in the NBA. 
 
 A notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
 
