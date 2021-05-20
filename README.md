@@ -3,7 +3,7 @@
 A notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
 
 #### Goal:
-More than prediction game outcomes, my goal was to understand the impact that different schedule related metrics may have on performance. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators during the season.
+The model outcomes game predictions (along with the probability associated to winning and losing). However, my main goal was to understand how different games may be affected by schedule related metrics such as mileage, rest, density, time zone shifts, etc. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators during the season.
 
 #### Data Source:
 * I built an R package ([{airball}](https://github.com/josedv82/airball)) to [scrape the data](https://github.com/josedv82/NBA_Predictive_Model/blob/main/Airball_Download.Rmd). {airball} provides various functions to extract schedule related metrics from public box score information.
