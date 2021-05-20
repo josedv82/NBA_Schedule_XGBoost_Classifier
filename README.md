@@ -43,6 +43,7 @@ Totals 3269 4370 0.276083  =2109/7639
 
 #### Model Explainability:
 * I used [SHAP](https://www.kaggle.com/dansbecker/shap-values) values to identify feature importance, as well as to explain how different features contribute to model predictions and outcome probabilities for each observation.
+* Below is an example image of how the model makes a decision for one game:
 
 <img src="https://github.com/josedv82/NBA_Schedule_Classifier/blob/main/SHAP_Force_Plot.PNG" align="center" />
 
