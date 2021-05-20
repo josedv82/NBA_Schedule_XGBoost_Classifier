@@ -9,7 +9,7 @@ author: Jose Fernandez
 library(tidyverse)
 library(airball) #more info: https://github.com/josedv82/airball
 
-#data pull
+#data pull using nba_travel() function from {airball} package.
 data <- nba_travel(start_season = 2000, end_season = 2019) %>% ungroup() # adjust parameters based on interest
 
 #feature engineering
