@@ -60,3 +60,7 @@ For more info on the science behind SHAP values visit this [video.](https://www.
 * Continue improving model performance.
 * Identify other potential relevant features.
 * Deploy model into shiny app to provide user friendly access to predictions. 
+
+#### Other NBA related work
+* [NBA Game Density APP](https://josedv.shinyapps.io/NBASchedule/)
+* [airball R package](https://github.com/josedv82/airball)
