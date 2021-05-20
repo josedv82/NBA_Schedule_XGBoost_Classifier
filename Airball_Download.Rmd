@@ -1,7 +1,7 @@
 ---
 title: "Airball NBA Download"
 author: Jose Fernandez
-2018
+2021
 ---
 
 
@@ -15,8 +15,12 @@ data <- nba_travel(start_season = 2000, end_season = 2019) %>% ungroup() # adjus
 #feature engineering
 dat <- data %>% 
   group_by(Season, Team) %>%
-  complete(Date = seq.Date(min(Date), max(Date), by="day")) %>%
+  
+  #add and clean missing dates needed for time between games
+  complete(Date = seq.Date(min(Date), max(Date), by="day")) %>% 
   mutate(Phase = ifelse(is.na(Phase), "-", Phase)) %>%
+  
+  #calcuate number of games playe in different time windows
   mutate(G3 = zoo::rollapplyr(Phase == "RS", width = 3, sum, partial = T)) %>%
   mutate(G5 = zoo::rollapplyr(Phase == "RS", width = 5, sum, partial = T)) %>%
   mutate(G7 = zoo::rollapplyr(Phase == "RS", width = 7, sum, partial = T)) %>%
@@ -27,27 +31,39 @@ dat <- data %>%
   mutate(G17 = zoo::rollapplyr(Phase == "RS", width = 17, sum, partial = T)) %>%
   mutate(G19 = zoo::rollapplyr(Phase == "RS", width = 19, sum, partial = T)) %>%
   mutate(G21 = zoo::rollapplyr(Phase == "RS", width = 21, sum, partial = T)) %>%
+  
+  #calculate number of time zone changes for different time windows
   mutate(`Shift` = ifelse(is.na(`Shift (hrs)`), 0, `Shift (hrs)`)) %>%
   mutate(Shift3 = zoo::rollapplyr(Shift != 0, width = 3, sum, partial = T)) %>%
   mutate(Shift5 = zoo::rollapplyr(Shift != 0, width = 5, sum, partial = T)) %>%
   mutate(Shift7 = zoo::rollapplyr(Shift != 0, width = 7, sum, partial = T)) %>%
   mutate(Shift9 = zoo::rollapplyr(Shift != 0, width = 9, sum, partial = T)) %>%
+  
+  #calculate distance traveled for different time windows
   mutate(Distance = ifelse(is.na(Distance), 0, Distance)) %>%
   mutate(Distance3 = zoo::rollapplyr(Distance, width = 3, sum, partial = T)) %>%
   mutate(Distance5 = zoo::rollapplyr(Distance, width = 5, sum, partial = T)) %>%
   mutate(Distance7 = zoo::rollapplyr(Distance, width = 7, sum, partial = T)) %>%
   mutate(Distance9 = zoo::rollapplyr(Distance, width = 9, sum, partial = T)) %>%
   filter(Phase != "-") %>%
+  
+  #calculate winning %
   mutate(Games = row_number()) %>%
   mutate(W = zoo::rollapplyr(`W/L` == "W", 82, sum, partial = T)) %>%
   mutate(win_pct = round((W/Games),2)) %>% 
+  
+  #calculate winnning streak
   mutate(Streak2 = sequence(rle(`W/L`)$lengths)) %>% 
   mutate(Streak2 = ifelse(`W/L` == "L", Streak2 * -1, Streak2)) %>%
   mutate(Streak1 = lag(Streak2)) %>%
   mutate(Streak = ifelse(is.na(Streak1), 0, Streak1)) %>%
   select(-Streak2, -Streak1) %>%
   ungroup() %>% 
+  
+  #select features of interest
   select(Season, Team, Opponent, Date, Location, Distance, Distance3, Distance5, Distance7, Distance9, Rest, Zone = `Shift (hrs)`, Result = `W/L`, G3, G5, G7, G9, G11, G13, G15, G17, G19, G21, Shift3, Shift5, Shift7, Shift9, Streak, win_pct) %>% 
+  
+  #final cleaning
   mutate(Location = ifelse(Location == "Away", 1, 0)) %>% 
   mutate(Result = ifelse(Result == "W", 1, 0)) %>%
   mutate(Result = ifelse(Date >= Sys.Date(), NA, Result)) %>%
@@ -55,12 +71,14 @@ dat <- data %>%
   filter(Season == "2020-21") %>% #comment this for all data
   fill(win_pct)
 
-#opponent features
+#code to get the same features for the opponent team so that in can be use for analysis as well
 dat1 <- dat %>%
   select(Season, Opponent = Team, Team = Opponent, Date, Opp_Distance = Distance, Opp_Rest = Rest, Opp_Zone = Zone, Opp_G3 = G3, Opp_G5 = G5, Opp_G7 = G7, Opp_G9 = G9, Opp_G11 = G11, Opp_G13 = G13, Opp_G15 = G15, Opp_G17 = G17, Opp_G19 = G19, Opp_G21 = G21, Opp_Shift3 = Shift3,  Opp_Shift5 = Shift5,  Opp_Shift7 = Shift7, Opp_Shift9 = Shift9, Opp_Distance3 = Distance3, Opp_Distance5 = Distance5, Opp_Distance7 = Distance7, Opp_Distance9 = Distance9, Opp_Streak = Streak, opp_win_pct = win_pct)
 
+#join team and opponents datasets
 dat_full <- full_join(dat, dat1) 
 
+#uncomment to export the data into csv format
 #write.csv(dat_full, "data_NBA_sche.csv")
 
 ```
