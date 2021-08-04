@@ -1,6 +1,6 @@
 # Influence of schedule & travel metrics on game outcomes in the NBA. 
 
-A notebook showcasing the workflow of a model to predict NBA game outcomes and winning probabilities based on schedule related data. 
+Predicting NBA game outcomes and extracting win probabilities for each game based on schedule, travel and game density metrics. 
 
 #### Goal:
 The model outcomes game predictions (along with the probability associated to winning and losing). However, my main goal was to understand how different games may be affected by schedule related metrics such as mileage, rest, density, time zone shifts, etc. This information could potentially be used by teams to optimize travel plans and manage different schedule indicators during the season.
