@@ -7,7 +7,7 @@ The model outcomes game predictions (along with the probability associated to wi
 
 #### Data Source:
 * I built an R package ([{airball}](https://github.com/josedv82/airball)) to [scrape the data](https://github.com/josedv82/NBA_Predictive_Model/blob/main/Airball_Download.Rmd). {airball} provides various functions to extract schedule related metrics from public box score information.
-* Data preparation. My code to clean the data and prepare it modeling is available [here.](https://github.com/josedv82/NBA_Schedule_Classifier/blob/main/Airball_Download.Rmd)
+* Data preparation. My code to clean the data and prepare it for modeling is available [here.](https://github.com/josedv82/NBA_Schedule_Classifier/blob/main/Airball_Download.Rmd)
 
 Once the data is ready:
 * To train the model I used 20 seasons of NBA data (2000-19).
